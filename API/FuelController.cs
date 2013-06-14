@@ -9,32 +9,26 @@ namespace DataNissen.API
 {
     public class FuelController : ApiController
     {
-
         //
-        // GET /api/driving
-        public HttpResponseMessage Get(string metrics="EU", string sDistance="100km", double usedfuel=8.2, string convertToMetrics="")
+        // GET /api/fuel
+        public HttpResponseMessage Get(string metrics="EU", string sDistance="100km", double used=8.2, string convertToMetrics="")
         {
-
             //Not really constants, but they are constants in the sense of
             //that they are used when converting from Kilometers to Miles.
             double distanceConst = 0; 
             double fuelConst = 0;
-
             double calculatedAverage = 0;
             double distance = 0;
             string parseDistance = "";
 
-            //Because the user might write the distance and end it with unit km or something else - we step by char and see if digit.
+            //Because the user might write the distance and end it with unit km or something else - we step by char and see if is digit.
             for (int i = 0; i < sDistance.Length; i++)
             {
-                //If the selected character is not a digit and not a dot then it is one of the characters that is part of the selected unit of the user.
+                //If the selected character is a digit and a dot(meaning it contains decimals
+                //then add it to string parseDistance.
                 if (Char.IsDigit(sDistance.ToCharArray()[i]) || sDistance[i].Equals('.'))
                 {
                     parseDistance += sDistance[i];
-                }
-                else
-                {
-                    continue;
                 }
             }
 
@@ -46,22 +40,22 @@ namespace DataNissen.API
             {
                 distanceConst = 1.6093472186944; //1 KM is about 1.6 miles
                 fuelConst = 3.78541178; //1 Liter is about 3.78 Gallons.
-                calculatedAverage = (distance / distanceConst) / (usedfuel / fuelConst);
+                calculatedAverage = (distance / distanceConst) / (used / fuelConst);
             }
             else if (metrics.Equals("UK"))
             {
                 distanceConst = 1.6093472186944; //1 KM is about 1.6 miles
                 fuelConst = 4.54609188; //1 Liter is about 3.78 Gallons.
-                calculatedAverage = (distance / distanceConst) / (usedfuel / fuelConst);
+                calculatedAverage = (distance / distanceConst) / (used / fuelConst);
             }
             else if (metrics.Equals("EU"))
             {
                 distanceConst = 1;
                 fuelConst = 1;
-                calculatedAverage = (usedfuel / (distance / 100));
-
+                calculatedAverage = (used / (distance / 100));
             }
 
+            //Using own HttpResponseMessage for future additions that might be added - so we can push multiply results to API requester.
             return new HttpResponseMessage()
             {
                 Content = new StringContent(

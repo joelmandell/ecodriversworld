@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Project";
+}
+
+<script>
+
+    var AppModel =  {
+
+        sessionstat: ko.observable("Content")
+
+    };
+
+    function SetSess() {
+        $.post("/Home/SetSession/");
+        AppModel.sessionstat = "Session is set";
+    }
+
+    function UnsetSess() {
+        $.post("/Home/UnsetSession/");
+        AppModel.sessionstat = "Session is unset";
+    }
+
+    $(function () {
+        ko.applyBindings(AppModel, document.body);
+    });
+
+    </script>
+<h2>Project</h2>
+
+<input type="button" onclick="SetSess()" value="Set Session" />
+<input type="button" onclick="UnsetSess()" value="Unset Session" />
+
+<span data-bind="text: sessionstat"></span>

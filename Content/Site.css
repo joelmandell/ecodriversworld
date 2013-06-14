@@ -1,0 +1,115 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color:#fff;
+    margin:20px auto;
+}
+
+#page {
+    background-color:#fff;
+    bottom:0;
+    top:0;
+    left:0;
+    float:left;
+    position:absolute;
+    width:100%;
+    min-width:500px;
+    height:100%;
+    
+}
+
+#search_field {
+    float:right; position:relative;
+}
+
+#search_field input {
+    border:1px solid white;display:inline;
+    }
+
+#logo {
+    width:100%;
+    background-image:url("/Content/themes/base/images/ecoheader.png");
+    background-repeat:no-repeat;
+    background-color: #000;
+    height:320px;
+}
+
+footer {
+    height:140px;
+    background-color:lightblue;
+    bottom:0;
+    margin:0;
+    padding:0;
+    width:100%;
+    margin-top:70px;
+}
+
+#page footer section {
+    margin-left:20px;
+}
+
+#sidebar {
+    width:150px;
+    float:left;
+    margin-left:20px;
+    position:relative;
+    margin-bottom:140px;
+}
+
+#content {
+    margin-left:200px;
+    margin-right:20px;
+    top:0;
+    bottom:0;
+    position:relative;
+    margin-bottom:140px;
+    background-color:#fff;
+
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+/* Navigation and their links */
+nav {
+    width:100%;
+    background-color:#232323;
+    height:50px;
+    position:relative;
+    margin-top:270px;
+    float:left;
+}
+
+#container {
+
+
+}
+
+
+ul
+{
+    list-style-type:none;
+    margin-left:20px;
+    padding:1px;
+    clear:both;
+}
+
+li
+{
+    padding:1px 1px 1px 1px;
+    background-color:#232323;
+    margin-right:2em;
+    display:inline;
+}
+
+
+li a {
+    color:#fff;
+}

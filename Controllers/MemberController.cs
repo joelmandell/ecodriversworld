@@ -16,10 +16,10 @@ namespace DataNissen.Controllers
             return View("member");
         }
 
-        public string Register()
+        public ActionResult Register()
         {
             //Should return view later on from Views/Member/{View}.cshtml
-            return "REGISTER HERE";
+            return View("register");
         }
 
     }

@@ -46,16 +46,5 @@ namespace DataNissen.Controllers
             return IsSession();
         }
 
-        public ActionResult ProjectDescription(int numbers=0)
-        {
-            return View("project");     
-        }
-
-        [HttpPost]
-        public string ProjectDescription(string numbers = "0")
-        {
-            return numbers;
-        }
-
     }
 }

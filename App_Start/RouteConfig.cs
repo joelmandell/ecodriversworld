@@ -18,6 +18,12 @@ namespace DataNissen
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Member",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Member", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

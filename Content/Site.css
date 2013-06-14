@@ -21,16 +21,15 @@ body {
     width:100%;
     min-width:500px;
     height:100%;
-    
 }
 
-#search_field {
-    float:right; position:relative;
+nav input {
+    border: 1px solid white;
+    display: inline;
+    float: right;
+    padding: 1px 1px 1px 1px;
+    margin-right: 2em;
 }
-
-#search_field input {
-    border:1px solid white;display:inline;
-    }
 
 #logo {
     width:100%;
@@ -87,18 +86,13 @@ nav {
     float:left;
 }
 
-#container {
-
-
-}
-
-
 ul
 {
     list-style-type:none;
     margin-left:20px;
     padding:1px;
     clear:both;
+    float:left;
 }
 
 li

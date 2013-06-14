@@ -15,8 +15,8 @@ namespace DataNissen.API
         public const double AMERICAN_GALLON = 3.78541178;
 
         //
-        // GET /api/fuel
-        public HttpResponseMessage Get(string metrics="EU", string sDistance="100km", double used=8.2)
+        // GET /api/fuel?metrics=EU&sDistance=200km&used=8.2
+        public HttpResponseMessage Get(string metrics="EU", string sDistance="200km", double used=8.2)
         {
             double calculatedAverage = 0;
             double distance = 0;

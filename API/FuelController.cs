@@ -21,6 +21,10 @@ namespace DataNissen.API
             double calculatedAverage = 0;
             double distance = 0;
             string parseDistance = "";
+
+            //List with errors when inputed data from user is faulty.
+            //ERROR==0 Incorrect metrics value.
+            List<string> errors = new List<string>();
             
             //Because the user might write the distance and end it with unit km or something else - we step by char and see if is digit.
             for (int i = 0; i < sDistance.Length; i++)
@@ -48,6 +52,33 @@ namespace DataNissen.API
             else if (metrics.Equals("EU"))
             {
                 calculatedAverage = (used / (distance / 100));
+            }
+            else
+            {
+                //Not known metrics then give them error 0 
+                errors.Add("Error: 0");
+            }
+
+            //Is there errors?
+            if (errors.Count > 0)
+            {
+                string concatedErrors = "";
+
+                //Build xml with the errors.
+                for (int i = 0; errors.Count < i; i++)
+                {
+                    concatedErrors += "<string>" + errors + "</string>";
+                }
+
+                //Show them for user.
+                return new HttpResponseMessage()
+                {
+                    Content = new StringContent(
+                        concatedErrors,
+                        System.Text.Encoding.UTF8,
+                        "text/xml"
+                    )
+                };
             }
 
             //Using own HttpResponseMessage for future additions that might be added 

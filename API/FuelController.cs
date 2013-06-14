@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace DataNissen.API
 {
-    public class DrivingController : ApiController
+    public class FuelController : ApiController
     {
 
         //
@@ -41,7 +41,7 @@ namespace DataNissen.API
             //Convert founded number value in sDistance to double (because it might be with decimals).
             distance = Convert.ToDouble(parseDistance, System.Globalization.CultureInfo.InvariantCulture);
 
-            //Else-conditions if converting.
+            //Else-conditions if converting from Liters / KM.
             if (metrics.Equals("US"))
             {
                 distanceConst = 1.6093472186944; //1 KM is about 1.6 miles

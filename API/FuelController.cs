@@ -11,7 +11,7 @@ namespace DataNissen.API
     {
         //
         // GET /api/fuel
-        public HttpResponseMessage Get(string metrics="EU", string sDistance="100km", double used=8.2, string convertToMetrics="")
+        public HttpResponseMessage Get(string metrics="EU", string sDistance="100km", double used=8.2)
         {
             //Not really constants, but they are constants in the sense of
             //that they are used when converting from Kilometers to Miles.
@@ -20,7 +20,7 @@ namespace DataNissen.API
             double calculatedAverage = 0;
             double distance = 0;
             string parseDistance = "";
-
+            
             //Because the user might write the distance and end it with unit km or something else - we step by char and see if is digit.
             for (int i = 0; i < sDistance.Length; i++)
             {

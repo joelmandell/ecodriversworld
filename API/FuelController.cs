@@ -24,6 +24,7 @@ namespace DataNissen.API
 
             //List with errors when inputed data from user is faulty.
             //ERROR==0 Incorrect metrics value.
+            //Error codes exists in the API documentation.
             List<string> errors = new List<string>();
             
             //Because the user might write the distance and end it with unit km or something else - we step by char and see if is digit.
@@ -56,13 +57,15 @@ namespace DataNissen.API
             else
             {
                 //Not known metrics then give them error 0 
-                errors.Add("Error: 0");
+                errors.Add("0");
             }
 
             //Is there errors?
             if (errors.Count > 0)
             {
-                string concatedErrors = string.Join("\n",errors.Select(e => String.Format("<string>{0}</string>", e)));
+                //What this line basically does here, is that it selects all strings in the List<String> errors and build xml.
+                //Why not using for-loop, read http://msdn.microsoft.com/en-us/library/ms182272%28v=vs.80%29.aspx
+                string concatedErrors = string.Join("\n",errors.Select(str => String.Format("<string type=\"error\">{0}</string>", str)));
 
                 //Show them for user.
                 return new HttpResponseMessage()
@@ -81,7 +84,7 @@ namespace DataNissen.API
             return new HttpResponseMessage()
             {
                 Content = new StringContent(
-                    "<string>"+calculatedAverage.ToString()+"</string>",
+                    "<string type=\"data\">"+calculatedAverage.ToString()+"</string>",
                     System.Text.Encoding.UTF8,
                     "text/xml"
                 )

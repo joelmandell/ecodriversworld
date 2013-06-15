@@ -65,7 +65,7 @@ namespace DataNissen.API
                 string concatedErrors = "";
 
                 //Build xml with the errors.
-                for (int i = 0; errors.Count < i; i++)
+                for (int i = 0; i < errors.Count; i++)
                 {
                     concatedErrors += "<string>" + errors + "</string>";
                 }
@@ -79,6 +79,7 @@ namespace DataNissen.API
                         "text/xml"
                     )
                 };
+                
             }
 
             //Using own HttpResponseMessage for future additions that might be added 

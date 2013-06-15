@@ -67,7 +67,7 @@ namespace DataNissen.API
                 //Build xml with the errors.
                 for (int i = 0; i < errors.Count; i++)
                 {
-                    concatedErrors += "<string>" + errors + "</string>";
+                    concatedErrors += "<string>" + errors[i] + "</string>";
                 }
 
                 //Show them for user.

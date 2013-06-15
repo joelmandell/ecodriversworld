@@ -62,13 +62,7 @@ namespace DataNissen.API
             //Is there errors?
             if (errors.Count > 0)
             {
-                string concatedErrors = "";
-
-                //Build xml with the errors.
-                for (int i = 0; i < errors.Count; i++)
-                {
-                    concatedErrors += "<string>" + errors[i] + "</string>";
-                }
+                string concatedErrors = string.Join("\n",errors.Select(e => String.Format("<string>{0}</string>", e)));
 
                 //Show them for user.
                 return new HttpResponseMessage()
@@ -83,7 +77,7 @@ namespace DataNissen.API
             }
 
             //Using own HttpResponseMessage for future additions that might be added 
-            //- so we can push multiply results to API requester.
+            //- so we can push multiply results to API requester. This comes handy already in error reporting.
             return new HttpResponseMessage()
             {
                 Content = new StringContent(

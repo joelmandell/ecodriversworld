@@ -19,7 +19,6 @@ namespace DataNissen.API
         public HttpResponseMessage Get(string metrics="EU", string sDistance="200km", double used=8.2)
         {
             double calculatedAverage = 0;
-            double distance = 0;
             string parseDistance = "";
 
             //List with errors when inputed data from user is faulty.
@@ -39,7 +38,7 @@ namespace DataNissen.API
             }
 
             //Convert founded number value in sDistance to double (because it might be with decimals).
-            distance = Convert.ToDouble(parseDistance, System.Globalization.CultureInfo.InvariantCulture);
+            double distance = Convert.ToDouble(parseDistance, System.Globalization.CultureInfo.InvariantCulture);
 
             //Else-conditions if converting from Liters / KM to US MPG(Miles per Gallon) or UK MPG.
             if (metrics.Equals("US"))
@@ -52,7 +51,7 @@ namespace DataNissen.API
             }
             else if (metrics.Equals("EU"))
             {
-                calculatedAverage = (used / (distance / 100));
+                calculatedAverage = (used / (distance/100));
             }
             else
             {

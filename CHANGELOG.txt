@@ -1,0 +1,4 @@
+2013-06-16
+----------------------------------------
+* Not considerd to be a change that has happend,
+  but I will use PBKDF2 as cryptation.

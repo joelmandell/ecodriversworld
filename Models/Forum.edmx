@@ -16,17 +16,12 @@
           <EntitySet Name="PostSet" EntityType="Model1.Post" />
           <EntitySet Name="ThreadSet" EntityType="Model1.Thread" />
           <EntitySet Name="SubjectSet" EntityType="Model1.Subject" />
-          <EntitySet Name="ForumSet" EntityType="Model1.Forum" />
-          <AssociationSet Name="ThreadForum" Association="Model1.ThreadForum">
-            <End Role="Thread" EntitySet="ThreadSet" />
-            <End Role="Forum" EntitySet="ForumSet" />
-          </AssociationSet>
-          <AssociationSet Name="SubjectThread" Association="Model1.SubjectThread">
-            <End Role="Subject" EntitySet="SubjectSet" />
-            <End Role="Thread" EntitySet="ThreadSet" />
-          </AssociationSet>
-          <AssociationSet Name="PostSubject" Association="Model1.PostSubject">
+          <AssociationSet Name="PostThread" Association="Model1.PostThread">
             <End Role="Post" EntitySet="PostSet" />
+            <End Role="Thread" EntitySet="ThreadSet" />
+          </AssociationSet>
+          <AssociationSet Name="ThreadSubject" Association="Model1.ThreadSubject">
+            <End Role="Thread" EntitySet="ThreadSet" />
             <End Role="Subject" EntitySet="SubjectSet" />
           </AssociationSet>
         </EntityContainer>
@@ -35,57 +30,44 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="SubjectId" Nullable="false" />
+          <Property Type="String" Name="ThreadId" Nullable="false" />
           <Property Type="String" Name="UserId" Nullable="false" />
           <Property Type="DateTime" Name="DateCreated" Nullable="false" />
           <Property Type="DateTime" Name="DateModified" Nullable="false" />
-          <NavigationProperty Name="Subject" Relationship="Model1.PostSubject" FromRole="Post" ToRole="Subject" />
           <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="Thread" Relationship="Model1.PostThread" FromRole="Post" ToRole="Thread" />
         </EntityType>
         <EntityType Name="Thread">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ForumId" Nullable="false" />
+          <Property Type="String" Name="SubjectId" Nullable="false" />
           <Property Type="DateTime" Name="DateCreated" Nullable="false" />
           <Property Type="DateTime" Name="DateModified" Nullable="false" />
-          <NavigationProperty Name="Forum" Relationship="Model1.ThreadForum" FromRole="Thread" ToRole="Forum" />
-          <NavigationProperty Name="Subject" Relationship="Model1.SubjectThread" FromRole="Thread" ToRole="Subject" />
           <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="Post" Relationship="Model1.PostThread" FromRole="Thread" ToRole="Post" />
+          <NavigationProperty Name="Subject" Relationship="Model1.ThreadSubject" FromRole="Thread" ToRole="Subject" />
+          <Property Type="Boolean" Name="Locked" Nullable="false" DefaultValue="False" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ThreadId" Nullable="false" />
           <Property Type="String" Name="UserId" Nullable="false" />
           <Property Type="DateTime" Name="DateCreated" Nullable="false" />
           <Property Type="DateTime" Name="DateModified" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="false" />
-          <NavigationProperty Name="Thread" Relationship="Model1.SubjectThread" FromRole="Subject" ToRole="Thread" />
-          <NavigationProperty Name="Post" Relationship="Model1.PostSubject" FromRole="Subject" ToRole="Post" />
-          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="Thread" Relationship="Model1.ThreadSubject" FromRole="Subject" ToRole="Thread" />
         </EntityType>
-        <EntityType Name="Forum">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" />
-          <NavigationProperty Name="Thread" Relationship="Model1.ThreadForum" FromRole="Forum" ToRole="Thread" />
-        </EntityType>
-        <Association Name="ThreadForum">
-          <End Type="Model1.Thread" Role="Thread" Multiplicity="1" />
-          <End Type="Model1.Forum" Role="Forum" Multiplicity="*" />
-        </Association>
-        <Association Name="SubjectThread">
-          <End Type="Model1.Subject" Role="Subject" Multiplicity="1" />
+        <Association Name="PostThread">
+          <End Type="Model1.Post" Role="Post" Multiplicity="1" />
           <End Type="Model1.Thread" Role="Thread" Multiplicity="*" />
         </Association>
-        <Association Name="PostSubject">
-          <End Type="Model1.Post" Role="Post" Multiplicity="1" />
+        <Association Name="ThreadSubject">
+          <End Type="Model1.Thread" Role="Thread" Multiplicity="1" />
           <End Type="Model1.Subject" Role="Subject" Multiplicity="*" />
         </Association>
       </Schema>

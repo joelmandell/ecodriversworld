@@ -6,10 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d5e8eaf995804992a9b9df900540aed7" Name="Diagram1" >
         <EntityTypeShape EntityType="Model1.Post" Width="1.5" PointX="6.125" PointY="0.875" />
-        <EntityTypeShape EntityType="Model1.Thread" Width="1.5" PointX="4.125" PointY="0.875" />
-        <EntityTypeShape EntityType="Model1.Subject" Width="1.5" PointX="2" PointY="0.875" />
+        <EntityTypeShape EntityType="Model1.Thread" Width="1.5" PointX="4.125" PointY="1.375" />
+        <EntityTypeShape EntityType="Model1.Subject" Width="1.5" PointX="1.875" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="Model1.PostThread" />
-        <AssociationConnector Association="Model1.ThreadSubject" />
+        <AssociationConnector Association="Model1.ThreadSubject" ManuallyRouted="false" >
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

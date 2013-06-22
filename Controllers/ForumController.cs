@@ -13,28 +13,26 @@ namespace DataNissen.Controllers
 
         public ActionResult Index()
         {
+            //List the subjects that is available
             return View();
         }
 
         //
-        // GET: /Forum/Details/5
-
-        public ActionResult Details(int id)
+        // GET: /Forum/Subject/1
+        public ActionResult Subject(int id)
         {
             return View();
         }
 
         //
-        // GET: /Forum/Create
-
-        public ActionResult Create()
+        // GET: /Forum/Thread
+        public ActionResult Thread(int id)
         {
             return View();
         }
 
         //
         // POST: /Forum/Create
-
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -52,9 +50,9 @@ namespace DataNissen.Controllers
 
         //
         // GET: /Forum/Edit/5
-
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string type)
         {
+            //string type can be subject or thread or post - those are editable entities.
             return View();
         }
 

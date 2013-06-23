@@ -148,6 +148,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Member.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Member.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Member.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Member.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Member.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Member.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -232,11 +247,29 @@
     </Content>
     <Content Include="Models\Forum.edmx.diagram">
       <DependentUpon>Forum.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Forum.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\Member.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Member.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Member.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Member.edmx</DependentUpon>
+      <LastGenOutput>Member.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Member.edmx.diagram">
+      <DependentUpon>Member.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Member.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Member.edmx</DependentUpon>
+      <LastGenOutput>Member.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />

@@ -49,6 +49,14 @@ namespace DataNissen.Controllers
         }
 
         //
+        // GET: /Forum/MoveThread/5
+        public ActionResult MoveThread(int sourceId, int targetId)
+        {
+            //string type can be subject or thread or post - those are editable entities.
+            return View();
+        }
+
+        //
         // GET: /Forum/Edit/5
         public ActionResult Edit(int id, string type)
         {

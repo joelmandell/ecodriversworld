@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace DataNissen.Controllers
 {
@@ -11,10 +12,14 @@ namespace DataNissen.Controllers
         //
         // GET: /Forum/
 
+        private var db = new Forum();
+
+        //private Models.MemberContainer db = new Models.MemberContainer();
         public ActionResult Index()
         {
             //List the subjects that is available
-            return View();
+           // db.Set(
+            return View("forum");
         }
 
         //

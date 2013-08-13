@@ -16,19 +16,24 @@ namespace DataNissen.API
 
         //
         // GET /api/fuel?metrics=EU&sDistance=200km&used=8.2
-        public HttpResponseMessage Get(string metrics="EU", string sDistance="200km", double used=8.2)
+        public HttpResponseMessage Get(string metrics="EU", string sDistance="200km", double used=0)
         {
             double calculatedAverage = 0;
             string parseDistance = "";
 
             //List with errors when inputed data from user is faulty.
             //ERROR==0 Incorrect metrics value.
-            //Error codes exists in the API documentation.
+            //ERROR==1 Incorrect data in used variable.
+            //Error codes exists in future the API documentation.
             List<string> errors = new List<string>();
-            
+
+            if (Double.IsNaN(used)) errors.Add("1"); 
+
             //Because the user might write the distance and end it with unit km or something else - we step by char and see if is digit.
             for (int i = 0; i < sDistance.Length; i++)
             {
+                //If missing arg then break out of this loop.
+                if (errors.Count > 0) break;
                 //If the selected character is a digit and a dot(meaning it contains decimals
                 //then add it to string parseDistance.
                 if (Char.IsDigit(sDistance.ToCharArray()[i]) || sDistance[i].Equals('.'))

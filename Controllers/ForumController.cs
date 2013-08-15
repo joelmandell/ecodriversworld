@@ -12,7 +12,7 @@ namespace DataNissen.Controllers
         //
         // GET: /Forum/
 
-        private var db = new Forum();
+        
 
         //private Models.MemberContainer db = new Models.MemberContainer();
         public ActionResult Index()

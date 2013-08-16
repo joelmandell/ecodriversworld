@@ -4,17 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using DataNissen.Models;
 
 namespace DataNissen.Controllers
 {
     public class ForumController : Controller
     {
+
+        private ForumModel forum = new ForumModel();
+
         //
         // GET: /Forum/
 
-        
-
-        //private Models.MemberContainer db = new Models.MemberContainer();
         public ActionResult Index()
         {
             //List the subjects that is available
@@ -26,7 +27,19 @@ namespace DataNissen.Controllers
         // GET: /Forum/Subject/1
         public ActionResult Subject(int id)
         {
-            return View();
+
+            //JUST BETA--
+            Subject subject = forum.Subject.Find(id);
+
+            if (subject != null)
+            {
+                return View("forum");
+            }
+            else
+            {
+                //Redirect("Home");
+                return View("forum");
+            }
         }
 
         //

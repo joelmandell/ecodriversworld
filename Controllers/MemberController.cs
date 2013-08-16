@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace DataNissen.Controllers
 {
@@ -10,6 +11,8 @@ namespace DataNissen.Controllers
     {
         //
         // GET: /Member/
+
+        private Models.Member member = new Models.Member();
 
         public ActionResult Index()
         {

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using DataNissen.Models;
+using SimpleCrypto;
 
 namespace DataNissen.Controllers
 {
@@ -14,6 +15,9 @@ namespace DataNissen.Controllers
         // GET: /Member/
 
         private MemberModel member = new MemberModel();
+
+        //SimpleCrypto used to create salts and hashes.
+        ICryptoService cryptoService = new PBKDF2();
 
         public ActionResult Index()
         {
@@ -42,10 +46,14 @@ namespace DataNissen.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
+            //Doing some testing in learning the FormCollection and
+            //also to secure the data..
             try
             {
-                // TODO: Add insert logic here
-
+                var username=collection.GetValue("username");
+                var password = collection.GetValue("password");
+                string salt = cryptoService.GenerateSalt();
+                string hashedPassword = cryptoService.Compute(password.ToString());
                 return RedirectToAction("Index");
             }
             catch

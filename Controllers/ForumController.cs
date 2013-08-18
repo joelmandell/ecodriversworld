@@ -27,8 +27,6 @@ namespace DataNissen.Controllers
         // GET: /Forum/Subject/1
         public ActionResult Subject(int id)
         {
-
-            //JUST BETA--
             Subject subject = forum.Subject.Find(id);
 
             if (subject != null)

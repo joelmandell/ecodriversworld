@@ -21,7 +21,7 @@ namespace DataNissen.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View("Member");
         }
 
         //
@@ -50,15 +50,23 @@ namespace DataNissen.Controllers
             //also to secure the data..
             try
             {
-                var username=collection.GetValue("username");
-                var password = collection.GetValue("password");
-                string salt = cryptoService.GenerateSalt();
-                string hashedPassword = cryptoService.Compute(password.ToString());
-                return RedirectToAction("Index");
+                string username = collection["username"];
+                string password = collection["password"];
+              //  string salt = cryptoService.GenerateSalt();
+               // string hashedPassword = cryptoService.Compute(password.ToString());
+
+                if (username.Contains("kalle"))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Edit");
+                }
             }
             catch
             {
-                return View();
+                return View("Forum");
             }
         }
 

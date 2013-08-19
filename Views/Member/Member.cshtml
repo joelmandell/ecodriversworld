@@ -7,3 +7,11 @@
 Vanligtvisst som inloggad användare så får du här tillgång till din profil.
 Men eftersom du ännu inte är medlem så erbjuder vi dig att registrera dig @Html.ActionLink("här!", "register");
 </p>
+
+@using (Html.BeginForm("Create", "Member", FormMethod.Post)) {
+    <p>
+        <input type="text" name="username" />
+<input type="text" name="password" />
+<input type="submit" value="Save" />
+</p>
+}

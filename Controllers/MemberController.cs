@@ -52,8 +52,8 @@ namespace DataNissen.Controllers
             {
                 string username = collection["username"];
                 string password = collection["password"];
-              //  string salt = cryptoService.GenerateSalt();
-               // string hashedPassword = cryptoService.Compute(password.ToString());
+                string salt = cryptoService.GenerateSalt();
+                string hashedPassword = cryptoService.Compute(password.ToString());
 
                 if (username.Contains("kalle"))
                 {

@@ -24,9 +24,13 @@ namespace DataNissen.Controllers
             return View("Member");
         }
 
+        public ActionResult Register()
+        {
+            return View("Register");
+        }
+
         //
         // GET: /Member/Details/5
-
         public ActionResult Details(int id)
         {
             return View();
@@ -34,7 +38,6 @@ namespace DataNissen.Controllers
 
         //
         // GET: /Member/Create
-
         public ActionResult Create()
         {
             return View();
@@ -42,18 +45,29 @@ namespace DataNissen.Controllers
 
         //
         // POST: /Member/Create
-
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            //Doing some testing in learning the FormCollection and
-            //also to secure the data..
+        
             try
             {
                 string username = collection["username"];
                 string password = collection["password"];
+                Uri Ref = Request.UrlReferrer;
+
+                Session["ref"] = Ref.Host;
+
                 string salt = cryptoService.GenerateSalt();
-                string hashedPassword = cryptoService.Compute(password.ToString());
+
+                if (password != "")
+                {
+                    string hashedPassword = cryptoService.Compute(password.ToString());
+                    Session["hash"] = hashedPassword;
+                }
+                else
+                {
+                    Session["hash"] ="";
+                }
 
                 if (username.Contains("kalle"))
                 {
@@ -61,18 +75,21 @@ namespace DataNissen.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Edit");
+                    ViewBag.errorData = "Not nice username!";
+
+                    return View("Index");
+
+                   // return RedirectToAction("Edit",5);
                 }
             }
             catch
             {
-                return View("Forum");
+                return Redirect("/Member/");
             }
         }
 
         //
         // GET: /Member/Edit/5
-
         public ActionResult Edit(int id)
         {
             return View();
@@ -80,7 +97,6 @@ namespace DataNissen.Controllers
 
         //
         // POST: /Member/Edit/5
-
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -98,7 +114,6 @@ namespace DataNissen.Controllers
 
         //
         // GET: /Member/Delete/5
-
         public ActionResult Delete(int id)
         {
             return View();
@@ -106,7 +121,6 @@ namespace DataNissen.Controllers
 
         //
         // POST: /Member/Delete/5
-
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

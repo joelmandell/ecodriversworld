@@ -5,9 +5,25 @@
 <h2>Medlemsidan</h2>
 <p>
 Vanligtvisst som inloggad användare så får du här tillgång till din profil.
-Men eftersom du ännu inte är medlem så erbjuder vi dig att registrera dig @Html.ActionLink("här!", "register");
+Men eftersom du ännu inte är medlem så erbjuder vi dig att registrera dig @Html.ActionLink("här!", "Register");
 </p>
 
+@{
+    
+    if(ViewBag.errorData!="")
+    {
+     <p>error: @ViewBag.errorData</p>   
+    }
+}
+
+    @{ 
+        
+        if(Session["hash"]!="")
+        {
+         <p>hash is: @Session["hash"]</p>   
+         }   
+    }
+<p>Ref is: @Session["ref"]</p>
 @using (Html.BeginForm("Create", "Member", FormMethod.Post)) {
     <p>
         <input type="text" name="username" />

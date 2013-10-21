@@ -20,7 +20,7 @@ namespace DataNissen.Controllers
         {
             //List the subjects that is available
            // db.Set(
-            return View("forum");
+            return View("Forum");
         }
 
         //
@@ -31,12 +31,12 @@ namespace DataNissen.Controllers
 
             if (subject != null)
             {
-                return View("forum");
+                return View("Forum");
             }
             else
             {
                 //Redirect("Home");
-                return View("forum");
+                return View("Forum");
             }
         }
 

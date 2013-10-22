@@ -13,36 +13,38 @@
     @RenderSection("scripts", required: false) 
 </head>
 <body>
+    <div id="pic1"><img src="~/Content/themes/base/images/carman1.png" /></div>
+        <div id="pic2"><img src="~/Content/themes/base/images/car2.png" /></div>
+
     <div id="page">
         <section id="logo">
 
             <nav>
                 <ul>
-
-                    @{ 
-                       /*Enumerate and create menu with links to controllers that are marked as linkable*/
-                    }
-                    <li><a href="/">Hem</a></li>
-                    <li><a href="/Forum/">Forum</a></li>
-                    <li><a href="#">Tävlingar</a></li>
-                    <li><a href="#">Verktyg</a></li>
+                    <li>@Html.ActionLink("Hem", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Forum", "Index", "Forum")</li>
+                    <li>@Html.ActionLink("Tester", "Index", "Tests")</li>
                 </ul>
 
-                <input type="search" value="Sök" />
             </nav>
 
         </section>
 
         <section id="sidebar">
-            <h1>Side</h1>
+
+            <br />
+                <input type="search" value="Sök" />
+
+            <h1>Senaste recensionen</h1>
     
             <p>
-                This is a test layout nothing serious here.
+                Nya renault clio är testad. 3.2l/100km säger tillverkaren,
+                kan snålkörning.se:s testförare klå det?
             </p>
-                   <h1>Side</h1>
-    
+                   
+            <h1>Nytt verktyg</h1>
             <p>
-                This is a test layout nothing serious here.
+                Nu kan ni konvertera mpg till l/100km och viceversa i forumet!
             </p>
         </section>
 

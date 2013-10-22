@@ -9,6 +9,14 @@ namespace DataNissen
 {
     public class RouteConfig
     {
+
+        private static string AllowedHostName = "";
+
+        public static string AllowedHost()
+        {
+            return AllowedHostName;
+        }
+
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -24,6 +32,13 @@ namespace DataNissen
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Member", action = "Index", id = UrlParameter.Optional }
             );
+
+            AllowOnlyCallsFromHost("localhost");
+        }
+
+        public static void AllowOnlyCallsFromHost(string hostname)
+        {
+            AllowedHostName = hostname;
         }
     }
 }

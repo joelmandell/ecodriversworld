@@ -48,21 +48,35 @@ namespace DataNissen.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-        
+            Exception e = new Exception();
             try
             {
                 string username = collection["username"];
                 string password = collection["password"];
+                string salt = cryptoService.GenerateSalt();
+
                 Uri Ref = Request.UrlReferrer;
 
-                Session["ref"] = Ref.Host;
+                //Is the host allowed? This is done in order to disable cross-scripting from other domain or host, only
+                if (RouteConfig.AllowedHost() != Ref.Host)
+                {
+                    e.Source = "Anrop ej tillåtet.";
+                    throw e;
+                }
 
-                string salt = cryptoService.GenerateSalt();
+                if (username == "" || password == "")
+                {
+                    e.Source = "Du har inte fyllt i fälten för lösenord eller användarnamn.";
+                    throw e;
+                } else {
+                    string hashedPassword = cryptoService.Compute(password.ToString());
+                    Session["hash"] = hashedPassword;
+                }
+
 
                 if (password != "")
                 {
-                    string hashedPassword = cryptoService.Compute(password.ToString());
-                    Session["hash"] = hashedPassword;
+
                 }
                 else
                 {
@@ -75,16 +89,15 @@ namespace DataNissen.Controllers
                 }
                 else
                 {
-                    ViewBag.errorData = "Not nice username!";
-
-                    return View("Index");
-
-                   // return RedirectToAction("Edit",5);
+                    e.Source = "";
+                    throw e;                
                 }
             }
             catch
             {
-                return Redirect("/Member/");
+
+                TempData["errorData"] = e.Source;
+                return RedirectToAction("Index","Member");
             }
         }
 

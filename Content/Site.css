@@ -1,56 +1,85 @@
 ﻿html {
-    position: relative;
     min-height: 100%;
+    font-size: .85em;
+    margin:0 auto;
+}
+
+input[type=submit] {
+
+    background-color:#2a89fc;
+    color:#fff;
+    border:0px groove #000;
+    font-weight:bold;
+    height:35px;
+    font-family:'Trebuchet MS';
+
+}
+
+input[type=submit]:hover {
+    background-color:#5ac4f2;
+}
+
+#eData {
+
+    background-color:lightblue;
+    font-weight:bolder;
+
+}
+
+#form_data {
+
+    background-color:#eee;
+    color:#000;
+    margin:4px 4px 4px 4px;
+    border:solid;
+
 }
 
 body {
-    font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
-    background-color:#fff;
-    margin:20px auto;
+    background-image:url("/Content/themes/base/images/stripe.png");
+    background-repeat:repeat-x;
+    width:960px;
+    margin:0 auto;
+}
+
+#pic1 {
+position:absolute;
+z-index:-1;
+bottom:0;
+left:-30px;    opacity:0.4;
+
+}
+
+#pic2 {
+position:absolute;
+z-index:-1;
+bottom:0;
+right:0;
 }
 
 #page {
     background-color:#fff;
-    bottom:0;
-    top:0;
-    left:0;
-    float:left;
     position:absolute;
-    width:100%;
+    top:0;
     min-width:500px;
-    height:100%;
+    -moz-box-shadow: 0 0 35px #000;
+    -webkit-box-shadow: 0 0 35px #000;
+    box-shadow: 0 0 35px #000;
 }
 
-nav input {
-    border: 1px solid white;
+#sidebar input {
+    border: 1px solid #000;
     display: inline;
-    float: right;
-    padding: 1px 1px 1px 1px;
-    margin-right: 2em;
 }
 
 #logo {
     width:100%;
-    background-image:url("/Content/themes/base/images/ecoheader.png");
+    background-image:url("/Content/themes/base/images/ecologo.png");
     background-repeat:no-repeat;
     background-color: #000;
-    height:320px;
-}
-
-footer {
-    height:140px;
-    background-color:lightblue;
-    bottom:0;
-    margin:0;
-    padding:0;
-    width:100%;
-    margin-top:70px;
-}
-
-#page footer section {
-    margin-left:20px;
+    height:250px;
 }
 
 #sidebar {
@@ -69,6 +98,7 @@ footer {
     position:relative;
     margin-bottom:140px;
     background-color:#fff;
+    max-width:700px;
 
 }
 
@@ -82,28 +112,36 @@ nav {
     background-color:#232323;
     height:50px;
     position:relative;
-    margin-top:270px;
+    margin-top:200px;
     float:left;
 }
 
 ul
 {
     list-style-type:none;
-    margin-left:20px;
-    padding:1px;
-    clear:both;
     float:left;
+margin-left:-40px;    margin-top:0;
 }
+
 
 li
 {
-    padding:1px 1px 1px 1px;
+    width:85px;
+    height:49px;
     background-color:#232323;
-    margin-right:2em;
-    display:inline;
+    font-size:1em;
+    font-family:'Trebuchet MS';
+    float:left;
 }
 
+li:hover {
+    background-color:#cd7e29;
+}
 
 li a {
+    margin-top:15px;
+    margin-left:20px;
+    float:left;
     color:#fff;
+    text-decoration:none;
 }

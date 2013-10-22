@@ -8,26 +8,29 @@ Vanligtvisst som inloggad användare så får du här tillgång till din profil.
 Men eftersom du ännu inte är medlem så erbjuder vi dig att registrera dig @Html.ActionLink("här!", "Register");
 </p>
 
+
+<fieldset id="form_info">
 @{
-    
-    if(ViewBag.errorData!="")
-    {
-     <p>error: @ViewBag.errorData</p>   
+    //This area will contain information about missed fields or other error.
+    if(@TempData["errorData"]!= "")
+    {    
+     <p id="eData">@TempData["errorData"]</p>   
     }
 }
 
-    @{ 
-        
-        if(Session["hash"]!="")
-        {
-         <p>hash is: @Session["hash"]</p>   
-         }   
-    }
-<p>Ref is: @Session["ref"]</p>
 @using (Html.BeginForm("Create", "Member", FormMethod.Post)) {
-    <p>
+    
+    <label>Användarnamn:</label>
+    <p> 
         <input type="text" name="username" />
-<input type="text" name="password" />
-<input type="submit" value="Save" />
-</p>
+    </p>
+    <label>Lösenord:</label>
+    <p>
+        <input type="text" name="password" />
+    </p>
+    <p>
+        <input type="submit" value="Logga in" />
+    </p>
+    
 }
+</fieldset>

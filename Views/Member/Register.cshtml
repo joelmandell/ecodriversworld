@@ -1,5 +1,60 @@
-﻿@{
+﻿@model DataNissen.Models.RegisterModel
+
+@{
     ViewBag.Title = "Registrera konto";
 }
 
+@using Recaptcha.Web.Mvc;
+
 <h2>Registrera ditt konto</h2>
+
+<fieldset>
+    <legend>Dina användaruppgifter:</legend>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+        <p>@Html.LabelFor(model => model.Member.UserName)
+        <br />
+        @Html.Html5TextBoxFor(model => model.Member.UserName, InputTypes.InputType.Text)
+        @Html.ValidationMessageFor(model => model.Member.UserName)
+        </p>
+
+        <p>
+        @Html.LabelFor(model => model.Member.PassHash)
+        <br />
+        @Html.EditorFor(model => model.Member.PassHash)
+        @Html.ValidationMessageFor(model => model.Member.PassHash)
+        </p>
+
+        <p>
+        @Html.LabelFor(model => model.Member.Email)
+        <br />
+        @Html.EditorFor(model => model.Member.Email)
+        @Html.ValidationMessageFor(model => model.Member.Email)
+        </p>
+
+        <p>
+        @Html.LabelFor(model => model.Property.FirstName)
+        <br />
+        @Html.EditorFor(model => model.Property.FirstName)
+        @Html.ValidationMessageFor(model => model.Property.FirstName)
+        </p>
+
+        <p>
+        @Html.LabelFor(model => model.Property.LastName)
+        <br />
+        @Html.EditorFor(model => model.Property.LastName)
+        @Html.ValidationMessageFor(model => model.Property.LastName)
+        </p>
+
+        @Html.Label("recaptcha_area","Spamskydd:")
+        @Html.Recaptcha()
+        @Html.ValidationMessage("captcha");
+        <p>
+
+            <input type="submit" value="Create" />
+
+        </p>
+}
+</fieldset>

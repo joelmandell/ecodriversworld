@@ -1,0 +1,37 @@
+﻿
+<fieldset id="form_info">
+    <legend>Inloggning</legend>
+@{
+    //This area will contain information about missed fields or other error.
+    if(@TempData["errorData"]!= "")
+    {    
+        <p id="eData">@TempData["errorData"]</p>   
+    } else {
+        
+    }
+
+    
+    if(@Session["hash"]!="")
+    {
+        <p>@Session["hash"]</p>
+    } else {
+        <p>W00t</p>   
+    }
+}
+
+@using (Html.BeginForm("Create", "Member", FormMethod.Post)) {
+    
+    <label>Användarnamn:</label>
+    <p> 
+        <input type="text" name="username" />
+    </p>
+    <label>Lösenord:</label>
+    <p>
+        <input type="text" name="password" />
+    </p>
+    <p>
+        <input type="submit" value="Logga in" />
+    </p>
+    
+}
+</fieldset>

@@ -5,32 +5,6 @@
 <h2>Medlemsidan</h2>
 <p>
 Vanligtvisst som inloggad användare så får du här tillgång till din profil.
-Men eftersom du ännu inte är medlem så erbjuder vi dig att registrera dig @Html.ActionLink("här!", "Register");
+Men eftersom du ännu inte är medlem så erbjuder vi dig att registrera dig @Html.ActionLink("här!", "Register")
 </p>
-
-
-<fieldset id="form_info">
-@{
-    //This area will contain information about missed fields or other error.
-    if(@TempData["errorData"]!= "")
-    {    
-     <p id="eData">@TempData["errorData"]</p>   
-    }
-}
-
-@using (Html.BeginForm("Create", "Member", FormMethod.Post)) {
-    
-    <label>Användarnamn:</label>
-    <p> 
-        <input type="text" name="username" />
-    </p>
-    <label>Lösenord:</label>
-    <p>
-        <input type="text" name="password" />
-    </p>
-    <p>
-        <input type="submit" value="Logga in" />
-    </p>
-    
-}
-</fieldset>
+@Html.Partial("~/Views/Partials/LoginForm.cshtml")

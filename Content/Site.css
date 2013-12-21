@@ -4,6 +4,7 @@
     margin:0 auto;
 }
 
+
 input[type=submit] {
 
     background-color:#2a89fc;
@@ -61,12 +62,13 @@ right:0;
 
 #page {
     background-color:#fff;
-    position:absolute;
     top:0;
-    min-width:500px;
+    width:960px;
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
+    display:table-row; /*the uggly hack - otherwise position:absolute could work in some cases....*/
     box-shadow: 0 0 35px #000;
+
 }
 
 #sidebar input {
@@ -98,12 +100,21 @@ right:0;
     position:relative;
     margin-bottom:140px;
     background-color:#fff;
-    max-width:700px;
-
+    width:700px;
+        white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+        overflow:inherit;
 }
 
 header, footer, nav, section {
     display: block;
+}
+
+
+footer {
+    width:960px;
+    float:left;
+    display:table;
+    margin-bottom:5px;
 }
 
 /* Navigation and their links */

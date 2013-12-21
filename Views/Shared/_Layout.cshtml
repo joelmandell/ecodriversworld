@@ -13,9 +13,6 @@
     @RenderSection("scripts", required: false) 
 </head>
 <body>
-    <div id="pic1"><img src="~/Content/themes/base/images/carman1.png" /></div>
-        <div id="pic2"><img src="~/Content/themes/base/images/car2.png" /></div>
-
     <div id="page">
         <section id="logo">
 
@@ -23,7 +20,8 @@
                 <ul>
                     <li>@Html.ActionLink("Hem", "Index", "Home")</li>
                     <li>@Html.ActionLink("Forum", "Index", "Forum")</li>
-                    <li>@Html.ActionLink("Tester", "Index", "Tests")</li>
+                    <li>@Html.ActionLink("Tester", "Index", "Review")</li>
+                    <li>@Html.ActionLink("Medlem", "Index", "Member")</li>
                 </ul>
 
             </nav>
@@ -51,6 +49,13 @@
         <section id="content">
         @RenderBody()
         </section>
+
+        
     </div>
+    <footer>
+
+            <p>Copyright Joel Mandell 2013-2014</p>
+
+   </footer>
 </body>
 </html>
